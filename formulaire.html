@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soumission Assurance Hypothécaire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style/formulaire.css">
+</head>
+<body>
+
+  <div id="form-container">
+    <form id="arcadia-form" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Nouvelle soumission - Assurance Hypothécaire">
+      <input type="hidden" name="_next" value="merci.html">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_replyto" id="_replyto_hidden" value="">
+      <input type="hidden" name="date_naissance" id="date_naissance_hidden">
+      <input type="hidden" name="co_date_naissance" id="co_date_naissance_hidden">
+
+      <div class="form-header">
+        <div class="form-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 11.5L12 4l9 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="6.5" y="11" width="11" height="8.5" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </div>
+        <div class="form-title">Soumission Assurance Hypothécaire</div>
+        <div class="form-subtitle">Étape <span id="current-step-label">1</span> sur 7</div>
+      </div>
+
+      <div class="progress-wrapper">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- STEP 1 -->
+      <section class="form-step active" data-step="1">
+        <div class="form-row">
+          <label class="form-label">Date de naissance <span class="required-asterisk">*</span></label>
+          <div class="date-input-group">
+            <input type="number" id="dob-year" placeholder="Année (AAAA)" min="1900" max="2025">
+            <input type="number" id="dob-month" placeholder="Mois (MM)" min="1" max="12">
+            <input type="number" id="dob-day" placeholder="Jour (JJ)" min="1" max="31">
+          </div>
+          <div class="field-error" id="dob-error">Veuillez entrer une date valide</div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">Sexe à la naissance <span class="required-asterisk">*</span></label>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="sexe_naissance" value="Homme" id="sexe-homme" required>
+              <label for="sexe-homme">Homme</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="sexe_naissance" value="Femme" id="sexe-femme" required>
+              <label for="sexe-femme">Femme</label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 2 -->
+      <section class="form-step" data-step="2">
+        <div class="form-row">
+          <label class="form-label">Statut de tabagisme (au cours des 12 derniers mois) <span class="required-asterisk">*</span></label>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="tabagisme" value="Fumeur" id="tab-fumeur" required>
+              <label for="tab-fumeur">Fumeur (cigarette, vapoteuse, cigare, etc.)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="tabagisme" value="Fume occasionnellement" id="tab-occasion">
+              <label for="tab-occasion">Fume à l'occasion (une fois cette année)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="tabagisme" value="Non-fumeur" id="tab-non">
+              <label for="tab-non">Non-fumeur</label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 3 -->
+      <section class="form-step" data-step="3">
+        <div class="form-row">
+          <label class="form-label">Le besoin de l'assurance est pour : <span class="required-asterisk">*</span></label>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="besoin_assurance" value="Futur achat" id="besoin-futur" required>
+              <label for="besoin-futur">Futur achat</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="besoin_assurance" value="Prêt en cours ou renouvellement" id="besoin-cours">
+              <label for="besoin-cours">Prêt en cours ou renouvellement</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row" id="assurance-existante-row" style="display:none;">
+          <label class="form-label">Avez-vous une assurance hypothécaire ? <span class="required-asterisk">*</span></label>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="assurance_existante" value="Oui" id="ass-oui">
+              <label for="ass-oui">Oui</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="assurance_existante" value="Non" id="ass-non">
+              <label for="ass-non">Non</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row" id="assurance-institution-row" style="display:none;">
+          <label class="form-label">Avec quelle institution ?</label>
+          <input type="text" name="assurance_institution" placeholder="Nom de l'institution">
+        </div>
+      </section>
+
+      <!-- STEP 4 -->
+      <section class="form-step" data-step="4">
+        <div class="form-row">
+          <label class="form-label">Aurez-vous un(e) Partenaire d'emprunt ? <span class="required-asterisk">*</span></label>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="co_emprunteur_present" value="Oui" id="co-oui" required>
+              <label for="co-oui">Oui</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="co_emprunteur_present" value="Non" id="co-non">
+              <label for="co-non">Non</label>
+            </div>
+          </div>
+        </div>
+
+        <div id="coempr-row" style="display:none; margin-top:20px;">
+          <div class="form-row">
+            <label class="form-label">Date de naissance du co-emprunteur <span class="required-asterisk">*</span></label>
+            <div class="date-input-group">
+              <input type="number" id="co-dob-year" placeholder="Année (AAAA)" min="1900" max="2025">
+              <input type="number" id="co-dob-month" placeholder="Mois (MM)" min="1" max="12">
+              <input type="number" id="co-dob-day" placeholder="Jour (JJ)" min="1" max="31">
+            </div>
+            <div class="field-error" id="co-dob-error">Veuillez entrer une date valide</div>
+          </div>
+
+          <div class="form-row">
+            <label class="form-label">Sexe à la naissance du co-emprunteur <span class="required-asterisk">*</span></label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" name="co_sexe_naissance" value="Homme" id="co-sexe-homme">
+                <label for="co-sexe-homme">Homme</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="co_sexe_naissance" value="Femme" id="co-sexe-femme">
+                <label for="co-sexe-femme">Femme</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label class="form-label">Statut de tabagisme du co-emprunteur (12 derniers mois) <span class="required-asterisk">*</span></label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" name="co_tabagisme" value="Fumeur" id="co-tab-fumeur">
+                <label for="co-tab-fumeur">Fumeur (cigarette, vapoteuse, cigare, etc.)</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="co_tabagisme" value="Fume occasionnellement" id="co-tab-occasion">
+                <label for="co-tab-occasion">Fume à l'occasion</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="co_tabagisme" value="Non-fumeur" id="co-tab-non">
+                <label for="co-tab-non">Non-fumeur</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 5 -->
+      <section class="form-step" data-step="5">
+        <div class="form-row">
+          <label class="form-label">Montant du prêt (CAD) <span class="required-asterisk">*</span></label>
+          <input type="number" name="montant_pret" min="0" step="0.01" placeholder="Ex: 250000" required>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">Durée du prêt (années) <span class="required-asterisk">*</span></label>
+          <input type="number" name="duree_pret" min="1" max="40" placeholder="Ex: 25" required>
+        </div>
+      </section>
+
+      <!-- STEP 6 -->
+      <section class="form-step" data-step="6">
+        <div class="form-row">
+          <label class="form-label">Quel est votre budget mensuel approximatif pour cette assurance ? <span class="required-asterisk">*</span></label>
+          <input type="number" name="budget_mensuel" min="0" placeholder="Ex: 100" required>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">Comment décririez-vous votre état de santé général ? <span class="required-asterisk">*</span></label>
+          <select name="etat_sante" required>
+            <option value="" selected disabled>Choisissez une option</option>
+            <option>Excellent</option>
+            <option>Très bon</option>
+            <option>Bon</option>
+            <option>Passable</option>
+            <option>Mauvais</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- STEP 7 -->
+      <section class="form-step" data-step="7">
+        <div class="form-row">
+          <label class="form-label">Nom <span class="required-asterisk">*</span></label>
+          <input type="text" name="nom" required>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">Prénom <span class="required-asterisk">*</span></label>
+          <input type="text" name="prenom" required>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">Adresse courriel <span class="required-asterisk">*</span></label>
+          <input type="email" id="client-email" name="email" required placeholder="exemple@courriel.com">
+          <div class="field-error" id="email-error">Veuillez entrer une adresse courriel valide</div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">Téléphone <span class="required-asterisk">*</span></label>
+          <input type="tel" id="client-phone" name="telephone" required placeholder="(514) 123-4567">
+          <div class="field-error" id="phone-error">Format valide: (XXX) XXX-XXXX ou XXX-XXX-XXXX</div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">Code Postal <span class="required-asterisk">*</span></label>
+          <input type="text" id="client-postal" name="code_postal" required placeholder="H3Z 1X4">
+          <div class="field-error" id="postal-error">Format valide: A1A 1A1 ou A1A1A1</div>
+        </div>
+
+        <div class="form-row">
+          <div class="checkbox-wrapper">
+              <input type="checkbox" id="agree" name="accept_conditions" required>
+              <label for="agree">J'ai lu et j'accepte les <a href="termes-et-conditions.html" target="_blank">Conditions d'Utilisation et la Politique de Confidentialité</a>. <span class="required-asterisk">*</span></label>
+          </div>
+       </div>
+      </section>
+
+      <div class="form-footer">
+        <button type="button" id="prevBtn" class="btn-form btn-outline" style="visibility:hidden;">← Précédent</button>
+        <div style="display:flex; gap:15px; align-items:center; flex-wrap:wrap;">
+          <div id="stepError" class="form-error">Veuillez remplir tous les champs requis.</div>
+          <button type="button" id="nextBtn" class="btn-form btn-primary">Suivant →</button>
+          <button type="submit" id="submitBtn" class="btn-form btn-primary" style="display:none;">Envoyer</button>
+        </div>
+      </div>
+
+      <div class="form-legal">En envoyant ce formulaire, vous acceptez que nous traitions vos informations pour répondre à votre demande.</div>
+    </form>
+  </div>
+
+  <script>
+    (function(){
+      const form = document.getElementById('arcadia-form');
+      const steps = Array.from(document.querySelectorAll('.form-step'));
+      const totalSteps = steps.length;
+      let current = 0;
+
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const submitBtn = document.getElementById('submitBtn');
+      const progressFill = document.getElementById('progress-fill');
+      const stepLabel = document.getElementById('current-step-label');
+      const errorBox = document.getElementById('stepError');
+
+      // Date inputs
+      const dobYear = document.getElementById('dob-year');
+      const dobMonth = document.getElementById('dob-month');
+      const dobDay = document.getElementById('dob-day');
+      const dobHidden = document.getElementById('date_naissance_hidden');
+      const dobError = document.getElementById('dob-error');
+
+      const coDobYear = document.getElementById('co-dob-year');
+      const coDobMonth = document.getElementById('co-dob-month');
+      const coDobDay = document.getElementById('co-dob-day');
+      const coDobHidden = document.getElementById('co_date_naissance_hidden');
+      const coDobError = document.getElementById('co-dob-error');
+
+      // Contact validation
+      const clientEmail = document.getElementById('client-email');
+      const clientPhone = document.getElementById('client-phone');
+      const clientPostal = document.getElementById('client-postal');
+      const emailError = document.getElementById('email-error');
+      const phoneError = document.getElementById('phone-error');
+      const postalError = document.getElementById('postal-error');
+
+      // Auto-advance date fields
+      dobYear.addEventListener('input', function() {
+        if (this.value.length === 4) dobMonth.focus();
+      });
+      dobMonth.addEventListener('input', function() {
+        if (this.value.length === 2) dobDay.focus();
+      });
+
+      coDobYear.addEventListener('input', function() {
+        if (this.value.length === 4) coDobMonth.focus();
+      });
+      coDobMonth.addEventListener('input', function() {
+        if (this.value.length === 2) coDobDay.focus();
+      });
+
+      // Validate and update date
+      function updateDate(year, month, day, hidden, error) {
+        if (year.value && month.value && day.value) {
+          const y = parseInt(year.value);
+          const m = parseInt(month.value);
+          const d = parseInt(day.value);
+          
+          if (y >= 1900 && y <= 2025 && m >= 1 && m <= 12 && d >= 1 && d <= 31) {
+            const dateStr = `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+            hidden.value = dateStr;
+            error.style.display = 'none';
+            year.classList.remove('invalid');
+            month.classList.remove('invalid');
+            day.classList.remove('invalid');
+          } else {
+            hidden.value = '';
+            error.style.display = 'block';
+            year.classList.add('invalid');
+            month.classList.add('invalid');
+            day.classList.add('invalid');
+          }
+        }
+      }
+
+      dobYear.addEventListener('input', () => updateDate(dobYear, dobMonth, dobDay, dobHidden, dobError));
+      dobMonth.addEventListener('input', () => updateDate(dobYear, dobMonth, dobDay, dobHidden, dobError));
+      dobDay.addEventListener('input', () => updateDate(dobYear, dobMonth, dobDay, dobHidden, dobError));
+
+      coDobYear.addEventListener('input', () => updateDate(coDobYear, coDobMonth, coDobDay, coDobHidden, coDobError));
+      coDobMonth.addEventListener('input', () => updateDate(coDobYear, coDobMonth, coDobDay, coDobHidden, coDobError));
+      coDobDay.addEventListener('input', () => updateDate(coDobYear, coDobMonth, coDobDay, coDobHidden, coDobError));
+
+      // Email validation
+      clientEmail.addEventListener('blur', function() {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (this.value && !emailRegex.test(this.value)) {
+          emailError.style.display = 'block';
+          this.classList.add('invalid');
+        } else {
+          emailError.style.display = 'none';
+          this.classList.remove('invalid');
+        }
+      });
+
+      // Phone validation and formatting
+      clientPhone.addEventListener('blur', function() {
+        const cleaned = this.value.replace(/\D/g, '');
+        if (this.value && cleaned.length !== 10) {
+          phoneError.style.display = 'block';
+          this.classList.add('invalid');
+        } else if (cleaned.length === 10) {
+          this.value = `(${cleaned.slice(0,3)}) ${cleaned.slice(3,6)}-${cleaned.slice(6)}`;
+          phoneError.style.display = 'none';
+          this.classList.remove('invalid');
+        }
+      });
+
+      // Postal code validation and formatting
+      clientPostal.addEventListener('blur', function() {
+        const cleaned = this.value.replace(/\s/g, '').toUpperCase();
+        const postalRegex = /^[A-Z]\d[A-Z]\d[A-Z]\d$/;
+        if (this.value && !postalRegex.test(cleaned)) {
+          postalError.style.display = 'block';
+          this.classList.add('invalid');
+        } else if (postalRegex.test(cleaned)) {
+          this.value = `${cleaned.slice(0,3)} ${cleaned.slice(3)}`;
+          postalError.style.display = 'none';
+          this.classList.remove('invalid');
+        }
+      });
+
+      function showStep(index){
+        steps.forEach((s,i)=> s.classList.toggle('active', i===index));
+        current = index;
+        const pct = Math.round(((index+1)/totalSteps)*100);
+        progressFill.style.width = pct + '%';
+        stepLabel.textContent = (index+1);
+        prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+        nextBtn.style.display = index === totalSteps-1 ? 'none' : 'inline-block';
+        submitBtn.style.display = index === totalSteps-1 ? 'inline-block' : 'none';
+        errorBox.style.display = 'none';
+        
+        const firstInput = steps[index].querySelector('input:not([type="hidden"]):not([type="radio"]):not([type="checkbox"]), select, textarea');
+        if(firstInput) {
+          setTimeout(() => firstInput.focus(), 100);
+        }
+      }
+
+      function validateCurrentStep(){
+        errorBox.style.display = 'none';
+        const currentStepEl = steps[current];
+        const requiredFields = Array.from(currentStepEl.querySelectorAll('[required]'));
+
+        // Special validation for date fields in step 1
+        if (current === 0) {
+          if (!dobHidden.value) {
+            dobError.style.display = 'block';
+            return false;
+          }
+        }
+
+        // Special validation for co-borrower date in step 4
+        if (current === 3) {
+          const coYesChecked = document.getElementById('co-oui').checked;
+          if (coYesChecked && !coDobHidden.value) {
+            coDobError.style.display = 'block';
+            return false;
+          }
+        }
+
+        // Special validation for step 3 conditional fields
+        if (current === 2) {
+          const pretCoursChecked = document.getElementById('besoin-cours').checked;
+          if (pretCoursChecked) {
+            const assuranceRadios = Array.from(currentStepEl.querySelectorAll('input[name="assurance_existante"]'));
+            const anyAssuranceChecked = assuranceRadios.some(r => r.checked);
+            if (!anyAssuranceChecked) {
+              return false;
+            }
+          }
+        }
+
+        // Special validation for step 7 contact info
+        if (current === 6) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(clientEmail.value)) {
+            emailError.style.display = 'block';
+            clientEmail.classList.add('invalid');
+            return false;
+          }
+
+          const cleanedPhone = clientPhone.value.replace(/\D/g, '');
+          if (cleanedPhone.length !== 10) {
+            phoneError.style.display = 'block';
+            clientPhone.classList.add('invalid');
+            return false;
+          }
+
+          const cleanedPostal = clientPostal.value.replace(/\s/g, '').toUpperCase();
+          const postalRegex = /^[A-Z]\d[A-Z]\d[A-Z]\d$/;
+          if (!postalRegex.test(cleanedPostal)) {
+            postalError.style.display = 'block';
+            clientPostal.classList.add('invalid');
+            return false;
+          }
+        }
+        
+        for (let el of requiredFields){
+          if (el.type === 'radio'){
+            const name = el.name;
+            const radiosInCurrentStep = Array.from(currentStepEl.querySelectorAll('input[name="'+name+'"]'));
+            const anyChecked = radiosInCurrentStep.some(r=> r.checked);
+            if (!anyChecked) return false;
+          } else if (el.type === 'checkbox'){
+            if (!el.checked) return false;
+          } else if (!el.value || el.value.trim() === '') {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      nextBtn.addEventListener('click', function(){
+        if (!validateCurrentStep()){
+          errorBox.style.display = 'block';
+          return;
+        }
+        showStep(current+1);
+      });
+
+      prevBtn.addEventListener('click', function(){
+        showStep(current-1);
+      });
+
+      // Conditional fields - besoin assurance (Step 3)
+      const besoinRadios = form.querySelectorAll('input[name="besoin_assurance"]');
+      const assuranceExistanteRow = document.getElementById('assurance-existante-row');
+      const institutionRow = document.getElementById('assurance-institution-row');
+      
+      besoinRadios.forEach(r => {
+        r.addEventListener('change', () => {
+          if (r.value === 'Prêt en cours ou renouvellement' && r.checked) {
+            assuranceExistanteRow.style.display = 'block';
+            const assRadios = assuranceExistanteRow.querySelectorAll('input[type="radio"]');
+            assRadios.forEach(ar => ar.required = true);
+          } else if (r.checked) {
+            assuranceExistanteRow.style.display = 'none';
+            institutionRow.style.display = 'none';
+            const assRadios = assuranceExistanteRow.querySelectorAll('input[type="radio"]');
+            assRadios.forEach(ar => {
+              ar.required = false;
+              ar.checked = false;
+            });
+            const instInput = institutionRow.querySelector('input');
+            if (instInput) instInput.value = '';
+          }
+        });
+      });
+
+      // Conditional fields - assurance institution
+      const assuranceRadios = form.querySelectorAll('input[name="assurance_existante"]');
+      assuranceRadios.forEach(r=>{
+        r.addEventListener('change', ()=>{
+          if (r.value === 'Oui' && r.checked){
+            institutionRow.style.display = 'block';
+          } else if (r.checked) {
+            institutionRow.style.display = 'none';
+            const instInput = institutionRow.querySelector('input');
+            if (instInput) instInput.value = '';
+          }
+        });
+      });
+
+      // Conditional fields - co-emprunteur
+      const coRadios = form.querySelectorAll('input[name="co_emprunteur_present"]');
+      const coRow = document.getElementById('coempr-row');
+      coRadios.forEach(r=>{
+        r.addEventListener('change', ()=>{
+          if (r.value === 'Oui' && r.checked){
+            coRow.style.display = 'block';
+            const radios = coRow.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => radio.required = true);
+          } else if (r.checked) {
+            coRow.style.display = 'none';
+            coDobYear.value = '';
+            coDobMonth.value = '';
+            coDobDay.value = '';
+            coDobHidden.value = '';
+            coDobError.style.display = 'none';
+            const radios = coRow.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => {
+              radio.required = false;
+              radio.checked = false;
+            });
+          }
+        });
+      });
+
+      // Update hidden _replyto field
+      const clientEmailInput = document.getElementById('client-email');
+      const replytoHidden = document.getElementById('_replyto_hidden');
+      if (clientEmailInput) {
+        clientEmailInput.addEventListener('input', ()=> {
+          replytoHidden.value = clientEmailInput.value || '';
+        });
+      }
+
+      showStep(0);
+
+      // ========================================
+      // FORM SUBMISSION - MODIFIÉ
+      // ========================================
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        if (!validateCurrentStep()){
+          errorBox.style.display = 'block';
+          errorBox.scrollIntoView({behavior: "smooth", block: "center"});
+          return;
+        }
+
+        // Update _replyto with email
+  const emailValue = clientEmailInput ? clientEmailInput.value : '';
+  if (emailValue && replytoHidden) {
+    replytoHidden.value = emailValue;
+  }
+
+  const FORMSPREE_URL = "https://nykolas.app.n8n.cloud/webhook/soumission-assurance";
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Envoi en cours...';
+
+  const fd = new FormData(form);
+
+  fetch(FORMSPREE_URL, {
+    method: "POST",
+    body: fd,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      return response.json().then(data => {
+        throw new Error(data.error || 'Erreur lors de l\'envoi');
+      });
+    }
+  })
+  .then(() => {
+    // ✅ NOUVELLE LOGIQUE - Passer les paramètres à merci.html
+    const nom = form.querySelector('input[name="nom"]').value;
+    const prenom = form.querySelector('input[name="prenom"]').value;
+    const email = form.querySelector('input[name="email"]').value;
+    const telephone = form.querySelector('input[name="telephone"]').value;
+
+    // Construire l'URL avec paramètres
+    const params = new URLSearchParams({
+      nom: nom,
+      prenom: prenom,
+      email: email,
+      telephone: telephone
+    });
+
+    // Rediriger vers merci.html avec les paramètres
+    window.location.href = `merci.html?${params.toString()}`;
+  })
+  .catch(err => {
+          console.error(err);
+          alert("Erreur lors de l'envoi : " + err.message);
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Envoyer';
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

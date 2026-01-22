@@ -22,6 +22,7 @@ nav {
   top: 0;
   width: 100%;
   background: rgba(248, 249, 250, 0.95);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   padding: 12px 5%;
   display: flex;
@@ -31,11 +32,16 @@ nav {
   border-bottom: 1px solid rgba(0, 61, 165, 0.1);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  min-height: 60px;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* Navigation scrollée (sur les autres sections - plus transparente) */
 nav.scrolled {
   background: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
 }
@@ -151,13 +157,15 @@ nav.scrolled {
   color: rgba(255, 255, 255, 0.9);
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 30px;
+  margin-bottom: 35px; /* Augmenté pour plus d'espace */
+  margin-top: 5px; /* Ajouté pour espacement cohérent */
   opacity: 0;
   animation: fadeInUp 1s ease 0.1s forwards;
-  padding: 8px 20px;
+  padding: 10px 22px; /* Ajusté pour rendu cohérent */
   background: rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   display: inline-block;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -300,8 +308,16 @@ nav.scrolled {
   margin: 0 auto;
   padding: 120px 5%;
   background: linear-gradient(rgba(245, 245, 245, 0.75), rgba(245, 245, 245, 0.75)),
-              url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1920&q=80') center/cover fixed;
+              url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1920&q=80') center/cover;
+  background-attachment: scroll; /* Changé de fixed à scroll pour compatibilité mobile */
   position: relative;
+}
+
+/* Sur desktop seulement, on peut utiliser fixed */
+@media (min-width: 1024px) {
+  .advantages {
+    background-attachment: fixed;
+  }
 }
 
 .grid {
@@ -422,7 +438,14 @@ nav.scrolled {
   margin: 0 auto;
   padding: 120px 5%;
   background: linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)),
-              url('https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1920&q=80') center/cover fixed;
+              url('https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1920&q=80') center/cover;
+  background-attachment: scroll;
+}
+
+@media (min-width: 1024px) {
+  .comparison {
+    background-attachment: fixed;
+  }
 }
 
 .table-wrapper {
@@ -537,7 +560,14 @@ tr:hover {
   margin: 0 auto;
   padding: 120px 5%;
   background: linear-gradient(rgba(245, 245, 245, 0.85), rgba(245, 245, 245, 0.85)),
-              url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80') center/cover fixed;
+              url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80') center/cover;
+  background-attachment: scroll;
+}
+
+@media (min-width: 1024px) {
+  .vision {
+    background-attachment: fixed;
+  }
 }
 
 .vision-grid {

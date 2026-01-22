@@ -110,7 +110,7 @@ nav.scrolled {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0, 61, 165, 0.75), rgba(0, 43, 115, 0.85)), 
+  background: linear-gradient(rgba(0, 61, 165, 0.50), rgba(0, 43, 115, 0.65)), 
               url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80') center/cover;
   padding: 0 5%;
   position: relative;
@@ -536,7 +536,8 @@ tr:hover {
   max-width: 1400px;
   margin: 0 auto;
   padding: 120px 5%;
-  background: linear-gradient(135deg, #e8f0fe 0%, #f5f8fc 100%);
+  background: linear-gradient(rgba(245, 245, 245, 0.85), rgba(245, 245, 245, 0.85)),
+              url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80') center/cover fixed;
 }
 
 .vision-grid {

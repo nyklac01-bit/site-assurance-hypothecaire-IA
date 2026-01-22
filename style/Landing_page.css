@@ -142,32 +142,38 @@ nav.scrolled {
 
 .hero-eyebrow {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   color: #ffffff;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 10px;
-  opacity: 0;
+  margin-bottom: 15px;
+  opacity: 1;
   animation: fadeInUp 1s ease forwards;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .hero-affiliation {
   font-size: 12px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  color: #ffffff;
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 35px; /* Augmenté pour plus d'espace */
-  margin-top: 5px; /* Ajouté pour espacement cohérent */
-  opacity: 0;
+  margin-bottom: 40px;
+  margin-top: 0;
+  opacity: 1;
   animation: fadeInUp 1s ease 0.1s forwards;
-  padding: 10px 22px; /* Ajusté pour rendu cohérent */
-  background: rgba(255, 255, 255, 0.15);
+  padding: 10px 22px;
+  background: rgba(0, 61, 165, 0.5);
   border-radius: 20px;
   display: inline-block;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .hero h1 {

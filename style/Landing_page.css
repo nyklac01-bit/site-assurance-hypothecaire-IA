@@ -531,6 +531,26 @@ tr:hover {
   box-shadow: 0 10px 30px rgba(0, 61, 165, 0.3);
 }
 
+.btn-learn-more {
+  background: #1565C0;
+  color: #ffffff;
+  padding: 16px 70px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  font-size: 15px;
+  transition: all 0.4s;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(21, 101, 192, 0.25);
+}
+
+.btn-learn-more:hover {
+  background: #0D47A1;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(21, 101, 192, 0.4);
+}
+
 /* Vision Section with Image Background */
 .vision {
   max-width: 1400px;

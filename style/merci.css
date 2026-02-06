@@ -154,6 +154,45 @@ nav {
   animation: fadeInUp 0.8s ease 0.2s both;
 }
 
+/* SECTION CALCULATEUR */
+.calculator-section {
+  margin: 25px 0 30px;
+  animation: fadeInUp 0.8s ease 0.3s both;
+}
+
+.calculator-text {
+  font-size: 18px;
+  color: #2C3E50;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.calculator-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #003DA5;
+  color: #ffffff;
+  padding: 16px 40px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.4s ease;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 25px rgba(0, 61, 165, 0.25);
+}
+
+.calculator-btn:hover {
+  background: #002B73;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 35px rgba(0, 61, 165, 0.35);
+}
+
+.calculator-btn i {
+  font-size: 18px;
+}
+
 .thank-you-subtitle {
   font-size: 20px;
   color: #003DA5;
@@ -427,6 +466,44 @@ nav {
   background: rgba(0, 61, 165, 0.05);
   border-color: rgba(0, 61, 165, 0.3);
   transform: translateY(-2px);
+}
+
+/* PHONE SCROLL BUTTON */
+.calculator-section {
+  position: relative;
+}
+
+.scroll-phone-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #003DA5;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 61, 165, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.scroll-phone-btn:hover {
+  background: rgba(0, 61, 165, 0.1);
+  border-color: #003DA5;
+  transform: translateY(-2px);
+}
+
+.bounce-arrow {
+  font-size: 14px;
+  animation: bounceDown 1.5s ease infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(4px); opacity: 1; }
 }
 
 .contact-info {

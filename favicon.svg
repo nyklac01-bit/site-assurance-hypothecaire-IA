@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+  <defs>
+    <linearGradient id="shield-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a3358"/>
+      <stop offset="100%" stop-color="#0b1f3a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0c252"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#b89530"/>
+    </linearGradient>
+  </defs>
+  <path d="M100,236 C60,210 4,170 4,70 L4,16 Q4,4 16,4 L184,4 Q196,4 196,16 L196,70 C196,170 140,210 100,236Z" fill="url(#gold)"/>
+  <path d="M100,226 C64,202 14,165 14,72 L14,24 Q14,14 24,14 L176,14 Q186,14 186,24 L186,72 C186,165 136,202 100,226Z" fill="url(#shield-bg)"/>
+  <path d="M50,105 L100,58 L150,105" fill="none" stroke="url(#gold)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="55" y1="115" x2="145" y2="115" stroke="#d4af37" stroke-width="1.5" opacity="0.4"/>
+  <text x="100" y="168" text-anchor="middle" fill="url(#gold)" font-family="'Playfair Display',serif" font-size="50" font-weight="600" letter-spacing="4">N.L</text>
+  <line x1="72" y1="182" x2="128" y2="182" stroke="#d4af37" stroke-width="1.5" opacity="0.4"/>
+</svg>
